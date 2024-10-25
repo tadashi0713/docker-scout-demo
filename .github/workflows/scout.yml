@@ -2,6 +2,15 @@ name: Build & Push Docker Image to Amazon ECR
 
 on:
   push:
+    branches:
+      - 'main'
+
+env:
+  AWS_REGION: 'ap-northeast-1'
+  AWS_ROLE_ARN: 'arn:aws:iam::175142243308:role/tadashi-docker-scout-demo-role'
+  REGISTRY: '175142243308.dkr.ecr.ap-northeast-1.amazonaws.com'
+  REPOSITORY: 'tadashi/docker-scout-demo'
+  IMAGE_TAG: ${{ github.sha }}
 
 jobs:
   build-push-ecr:
@@ -13,15 +22,22 @@ jobs:
       - uses: actions/checkout@v4
       - uses: aws-actions/configure-aws-credentials@v4
         with:
-          aws-region: 'ap-northeast-1'
-          role-to-assume: '${{ env.AWS_ROLE_ARN }}'
+          aws-region: ${{ env.AWS_REGION }}
+          role-to-assume: ${{ env.AWS_ROLE_ARN }}
       - uses: aws-actions/amazon-ecr-login@v1
         id: login-ecr
-      - name: Build, tag, and push docker image to Amazon ECR
-        env:
-          REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-          REPOSITORY: tadashi/docker-scout-demo
-          IMAGE_TAG: ${{ github.sha }}
-        run: |
+      - run: |
           docker build -t $REGISTRY/$REPOSITORY:$IMAGE_TAG .
           docker push $REGISTRY/$REPOSITORY:$IMAGE_TAG
+      - uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_TOKEN }}
+      - name: Docker Scout
+        id: docker-scout-environment
+        uses: docker/scout-action@v1
+        with:
+          command: environment
+          image: $REGISTRY/$REPOSITORY:$IMAGE_TAG
+          environment: production
+          organization: tadashinemoto567
