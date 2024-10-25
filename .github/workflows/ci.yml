@@ -1,8 +1,7 @@
 name: Build Docker Image & Compare with Scout
 
 on:
-  pull_request_target:
-    branches: ["main"]
+  push:
 
 env:
   AWS_REGION: 'ap-northeast-1'
