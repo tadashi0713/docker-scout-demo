@@ -38,6 +38,6 @@ jobs:
         uses: docker/scout-action@v1
         with:
           command: environment
-          image: $REGISTRY/$REPOSITORY:$IMAGE_TAG
+          image: ${{ env.REGISTRY }}/${{ env.REPOSITORY }}:${{ env.IMAGE_TAG }}
           environment: production
           organization: tadashinemoto567
