@@ -33,7 +33,7 @@ jobs:
       - uses: docker/scout-action@v1
         with:
             command: compare
-            image: $REPOSITORY:$IMAGE_TAG
+            image: '${{ env.REPOSITORY }}:${{ env.IMAGE_TAG }}'
             to: production
             ignore-unchanged: true
             only-severities: critical,high
