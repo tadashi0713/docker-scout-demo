@@ -11,6 +11,8 @@ env:
   IMAGE_TAG: ${{ github.sha }}
   DOCKER_SCOUT_HUB_USER: ${{ secrets.DOCKER_USERNAME }}
   DOCKER_SCOUT_HUB_PASSWORD: ${{ secrets.DOCKER_TOKEN }}
+  DOCKER_SCOUT_REGISTRY_USER: ${{ secrets.DOCKER_USERNAME }}
+  DOCKER_SCOUT_REGISTRY_PASSWORD: ${{ secrets.DOCKER_TOKEN }}
 
 jobs:
   scout:
