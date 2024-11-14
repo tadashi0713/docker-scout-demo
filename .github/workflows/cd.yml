@@ -27,16 +27,15 @@ jobs:
           aws-region: ${{ env.AWS_REGION }}
           role-to-assume: ${{ env.AWS_ROLE_ARN }}
       - uses: aws-actions/amazon-ecr-login@v1
-        id: login-ecr
       - uses: docker/build-push-action@v6
         with:
           push: true
-          tags: ${{ env.REGISTRY }}/${{ env.REPOSITORY }}:${{ env.IMAGE_TAG }}
-      - name: Docker Scout
-        id: docker-scout-environment
-        uses: docker/scout-action@v1
-        with:
-          command: environment
-          image: ${{ env.REGISTRY }}/${{ env.REPOSITORY }}:${{ env.IMAGE_TAG }}
-          environment: production
-          organization: tadashinemoto567
+          tags: ${{ env.REGISTRY }}/${{ env.REPOSITORY }}:latest,${{ env.REGISTRY }}/${{ env.REPOSITORY }}:${{ env.IMAGE_TAG }}
+      # - name: Docker Scout
+      #   id: docker-scout-environment
+      #   uses: docker/scout-action@v1
+      #   with:
+      #     command: environment
+      #     image: ${{ env.REGISTRY }}/${{ env.REPOSITORY }}:${{ env.IMAGE_TAG }}
+      #     environment: production
+      #     organization: tadashinemoto567
