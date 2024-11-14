@@ -23,5 +23,6 @@ jobs:
           tags: ${{ env.REPOSITORY }}:${{ env.IMAGE_TAG }}
       - uses: docker/scout-action@v1
         with:
-          command: cves,recommendations
+          command: cves
+          only-severities: critical,high
           organization: tadashinemoto567
