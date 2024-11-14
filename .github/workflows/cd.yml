@@ -48,5 +48,5 @@ jobs:
         with:
           command: environment
           image: ${{ env.DOCKERHUB_REPOSITORY }}:${{ env.IMAGE_TAG }}
-          environment: production
+          environment: prod
           organization: tadashinemoto567
