@@ -22,6 +22,7 @@ jobs:
       - uses: docker/build-push-action@v6
         with:
           push: false
+          load: true
           tags: ${{ env.DOCKERHUB_REPOSITORY }}
       - uses: docker/scout-action@v1
         with:
