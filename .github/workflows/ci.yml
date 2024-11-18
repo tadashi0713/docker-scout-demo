@@ -20,7 +20,6 @@ jobs:
         with:
           push: false
           load: true
-          provenance: true
           tags: ${{ env.DOCKERHUB_REPOSITORY }}:${{ env.IMAGE_TAG }}
       - id: docker-scout
         uses: docker/scout-action@v1
