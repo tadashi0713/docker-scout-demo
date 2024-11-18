@@ -52,5 +52,5 @@ jobs:
         with:
           command: compare
           image: ${{ env.AWS_REPOSITORY }}:${{ env.IMAGE_TAG }}
-          to-env: aws-prod
+          to-env: production
           organization: tadashinemoto567
