@@ -4,7 +4,7 @@ on:
   pull_request:
 
 env:
-  AWS_REPOSITORY: 'tadashi/docker-scout-demo'
+  ECR_REPOSITORY: 'tadashi/docker-scout-demo'
   IMAGE_TAG: ${{ github.sha }}
   DOCKER_SCOUT_HUB_USER: ${{ secrets.DOCKER_USERNAME }}
   DOCKER_SCOUT_HUB_PASSWORD: ${{ secrets.DOCKER_TOKEN }}
@@ -46,11 +46,11 @@ jobs:
           registry: ${{ env.ECR_REGISTRY }}
       - uses: docker/build-push-action@v6
         with:
-          tags: ${{ env.ECR_REGISTRY }}/${{ env.AWS_REPOSITORY }}:${{ env.IMAGE_TAG }}
+          tags: ${{ env.ECR_REGISTRY }}/${{ env.ECR_REPOSITORY }}:${{ env.IMAGE_TAG }}
       - id: docker-scout
         uses: docker/scout-action@v1
         with:
           command: compare
-          image: ${{ env.AWS_REPOSITORY }}:${{ env.IMAGE_TAG }}
+          image: ${{ env.ECR_REPOSITORY }}:${{ env.IMAGE_TAG }}
           to-env: production
           organization: tadashinemoto567
