@@ -30,6 +30,12 @@ jobs:
       - uses: docker/build-push-action@v6
         with:
           tags: ${{ env.ECR_REGISTRY }}/${{ env.REPOSITORY }}:${{ env.IMAGE_TAG }}
+      - uses: docker/scout-action@v1
+        with:
+          command: environment
+          image: ${{ env.ECR_REGISTRY }}/${{ env.REPOSITORY }}:${{ env.IMAGE_TAG }}
+          environment: aws-prod
+          organization: tadashinemoto567
 
   build-push-dockerhub:
     runs-on: ubuntu-latest
