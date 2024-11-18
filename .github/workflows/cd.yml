@@ -40,11 +40,11 @@ jobs:
           sbom: true
           provenance: true
           tags: | 
-            ${{ env.DOCKERHUB_REPOSITORY }}
             ${{ env.ECR_REGISTRY }}/${{ env.REPOSITORY }}:${{ env.IMAGE_TAG }}
+            ${{ env.DOCKERHUB_REPOSITORY }}
       - uses: docker/scout-action@v1
         with:
           command: environment
           image: ${{ env.DOCKERHUB_REPOSITORY }}
-          environment: staging
+          environment: stg
           organization: tadashinemoto567
