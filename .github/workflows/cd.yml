@@ -36,7 +36,7 @@ jobs:
         with:
           command: environment
           image: ${{ env.ECR_REGISTRY }}/${{ env.REPOSITORY }}:${{ env.IMAGE_TAG }}
-          environment: production
+          environment: staging
           organization: tadashinemoto567
 
   # build-push-dockerhub:
