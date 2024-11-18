@@ -21,8 +21,10 @@ jobs:
           push: false
           load: true
           tags: ${{ env.REPOSITORY }}:${{ env.IMAGE_TAG }}
-      - uses: docker/scout-action@v1
+      - id: docker-scout
+        uses: docker/scout-action@v1
         with:
-          command: cves
-          only-severities: critical,high
+          command: compare
+          image: ${{ env.REPOSITORY }}:${{ env.IMAGE_TAG }}
+          to-env: stg
           organization: tadashinemoto567
