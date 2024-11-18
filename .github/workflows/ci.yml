@@ -4,7 +4,7 @@ on:
   pull_request:
 
 env:
-  REPOSITORY: 'tadashi/docker-scout-demo'
+  REPOSITORY: 'tadashinemoto567/docker-scout-demo'
   IMAGE_TAG: ${{ github.sha }}
   DOCKER_SCOUT_HUB_USER: ${{ secrets.DOCKER_USERNAME }}
   DOCKER_SCOUT_HUB_PASSWORD: ${{ secrets.DOCKER_TOKEN }}
