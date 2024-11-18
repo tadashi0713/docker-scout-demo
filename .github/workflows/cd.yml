@@ -12,8 +12,6 @@ env:
   ECR_REPOSITORY: 'tadashi/docker-scout-demo'
   DOCKERHUB_REPOSITORY: 'tadashinemoto567/docker-scout-demo'
   IMAGE_TAG: ${{ github.sha }}
-  DOCKER_SCOUT_HUB_USER: ${{ secrets.DOCKER_USERNAME }}
-  DOCKER_SCOUT_HUB_PASSWORD: ${{ secrets.DOCKER_TOKEN }}
 
 jobs:
   build-push-ecr:
@@ -40,7 +38,7 @@ jobs:
         with:
           command: environment
           image: ${{ env.ECR_REGISTRY }}/${{ env.ECR_REPOSITORY }}:${{ env.IMAGE_TAG }}
-          environment: staging
+          environment: production
           organization: tadashinemoto567
 
   # build-push-dockerhub:
