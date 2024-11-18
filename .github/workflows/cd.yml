@@ -41,10 +41,10 @@ jobs:
           provenance: true
           tags: | 
             ${{ env.ECR_REGISTRY }}/${{ env.REPOSITORY }}:${{ env.IMAGE_TAG }}
-            ${{ env.DOCKERHUB_REPOSITORY }}
+            ${{ env.DOCKERHUB_REPOSITORY }}:${{ env.IMAGE_TAG }}
       - uses: docker/scout-action@v1
         with:
           command: environment
-          image: ${{ env.DOCKERHUB_REPOSITORY }}
+          image: ${{ env.DOCKERHUB_REPOSITORY }}:${{ env.IMAGE_TAG }}
           environment: stg
           organization: tadashinemoto567
