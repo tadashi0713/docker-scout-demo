@@ -47,6 +47,8 @@ jobs:
           registry: ${{ env.ECR_REGISTRY }}
       - uses: docker/build-push-action@v6
         with:
+          push: false
+          load: true
           tags: ${{ env.ECR_REGISTRY }}/${{ env.ECR_REPOSITORY }}:${{ env.IMAGE_TAG }}
       - id: docker-scout
         uses: docker/scout-action@v1
