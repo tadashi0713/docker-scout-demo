@@ -56,5 +56,5 @@ jobs:
         with:
           command: compare
           image: ${{ env.ECR_REPOSITORY }}:${{ env.IMAGE_TAG }}
-          to-env: production
+          to-env: staging
           organization: tadashinemoto567
