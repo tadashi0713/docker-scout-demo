@@ -11,7 +11,7 @@ env:
   AWS_ROLE_ARN: 'arn:aws:iam::175142243308:role/tadashi-docker-scout-demo-role'
   ECR_REGISTRY: '175142243308.dkr.ecr.ap-northeast-1.amazonaws.com'
   ECR_REPOSITORY: 'tadashi/docker-scout-demo'
-  DOCKERHUB_REPOSITORY: 'tadashinemoto567/docker-scout-demo'
+  DOCKERHUB_REPOSITORY: 'demotnemoto/docker-scout-demo'
 
 jobs:
   build-push-ecr:
@@ -50,4 +50,4 @@ jobs:
           command: environment
           image: ${{ env.DOCKERHUB_REPOSITORY }}:${{ env.IMAGE_TAG }}
           environment: production
-          organization: tadashinemoto567
+          organization: demotnemoto
