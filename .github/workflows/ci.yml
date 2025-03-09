@@ -7,7 +7,7 @@ env:
   IMAGE_TAG: ${{ github.sha }}
   DOCKER_SCOUT_HUB_USER: ${{ secrets.DOCKER_USERNAME }}
   DOCKER_SCOUT_HUB_PASSWORD: ${{ secrets.DOCKER_TOKEN }}
-  DOCKERHUB_REPOSITORY: 'tadashinemoto567/docker-scout-demo'
+  DOCKERHUB_REPOSITORY: 'demotnemoto/docker-scout-demo'
 
 jobs:
   scout:
@@ -27,4 +27,4 @@ jobs:
           command: compare
           image: ${{ env.DOCKERHUB_REPOSITORY }}:${{ env.IMAGE_TAG }}
           to-env: production
-          organization: tadashinemoto567
+          organization: demotnemoto
